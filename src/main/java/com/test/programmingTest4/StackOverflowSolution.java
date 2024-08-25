@@ -15,7 +15,7 @@ public class StackOverflowSolution {
 		while( i> 1){ 
 			//누적된 곱을 저장하는 parm 변수
 			parm *=i;
-			// 다음 값으로 넘어가기 위ㅣ해 1감소시키기
+			// 다음 값으로 넘어가기 위해 1감소시키기
 			i--;
 		}
 		//현재 parm과 i를 곱하고 i를 감소시키며 재귀호출
