@@ -4,7 +4,7 @@ public class Pond {
 	
 	public static void main(String[] args) {
 		
-		// 연못 상태 초기화 하기 earth 땅/ water 물 1 (2차원 배열)
+		// 연못 상태 초기화 하기 earth 땅=0/ water 물=1 (2차원 배열)
         int[][] pond = {
             {0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
             {0, 0, 0, 0, 1, 0, 0, 0, 0, 0},
@@ -17,22 +17,21 @@ public class Pond {
             {0, 0, 0, 0, 1, 0, 0, 0, 0, 0},
             {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}
         };
-
-        // 행과 열 연못의 길이만큼
+		
         int rows = pond.length; // 연못 배열의 행 수
         int cols = pond[0].length; // 연못 배열의 열 수 
-        boolean changed = true; // 배열이 변경되었는지 추적 하기 위한 변수
+        boolean changed = true; // 배열이 변경되었는지 추적하기 위한 변수
 
-        // 값을 증가시키기 위한 반복
+        // 값을 증가시키기 위한 While로 반복함
         while (changed) { 
             changed = false; // 변경 여부 초기화 
-            int[][] newPond = new int[rows][cols];
+            int[][] newPond = new int[rows][cols]; 
 
-            // 현재 상태 복사하여 새로운 상태 생성
+            // 현재 연못 배열을 복사하여 새로운 상태로 생성
             for (int i = 0; i < rows; i++) {
                 System.arraycopy(pond[i], 0, newPond[i], 0, cols);
             }
-            // for문을 통해 연못 배열을 순화하며 물의 깊이 증가시키기
+            // for문을 통해 연못 배열을 하나씩 접근해 물의 깊이 증가시키기
             for (int i = 1; i < rows - 1; i++) {
                 for (int j = 1; j < cols - 1; j++) {
                     if (pond[i][j] > 0) {  // 값이 1인경우(= 물))
@@ -41,14 +40,14 @@ public class Pond {
                             pond[i + 1][j] >= pond[i][j] &&
                             pond[i][j - 1] >= pond[i][j] &&
                             pond[i][j + 1] >= pond[i][j]) {
-                        	// 현재 위치의 값을 1 증가시키고 배열 변경됨을 표사
+                        	// 현재 위치의 값을 1 증가시키고 배열이 변경됨을 표시함
                             newPond[i][j]++;
                             changed = true;
                         }
                     }
                 }
             }
-            // 연못의 현재 상태를 새로운 상태로 업데이트함
+            // 연못의 현재 상태를 새로운 상태의 배열로 변경함.
             pond = newPond;
         }
 
@@ -62,13 +61,13 @@ public class Pond {
         }
 
         // 연못 물 깊이의 총합 계산
-        int totalDepth = 0;
+        int totalDepth = 0; //총 합을 담을 변수
         for (int[] row : pond) {
             for (int depth : row) {
                 totalDepth += depth;
             }
         }
-        System.out.println("연못 물 깊이의 총합: " + totalDepth);
+        System.out.println("연못 물 깊이 총합: " + totalDepth);
     }
 	
 	
