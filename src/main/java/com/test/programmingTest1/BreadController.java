@@ -19,9 +19,9 @@ public class BreadController {
 		List<Bread> breadList = service.selectRecipe();
         
 		// 2. 생성된 빵 리스트를 순회하며 출력하기
-        for (Bread bread : breadList) {
-            System.out.println(bread.toString()); 
-        }
+	        for (Bread bread : breadList) {
+	            System.out.println(bread.toString()); 
+	        }
 	}
 
 	
